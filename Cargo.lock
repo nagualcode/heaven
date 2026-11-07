@@ -191,21 +191,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f079e83a288787bcd14a6aea84cee5c87a67c5a3e660c30f557a3d24761b3527"
 
 [[package]]
-name = "chorusvox"
-version = "0.2.1"
-dependencies = [
- "clap-sys",
- "egui",
- "hound",
- "realfft",
- "truce",
- "truce-au",
- "truce-clap",
- "truce-egui",
- "truce-vst3",
-]
-
-[[package]]
 name = "clap-sys"
 version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -790,6 +775,21 @@ checksum = "b63fbc4a50860e98e7b2aa7804ded1db5cbc3aff9193adaff57a6931bf7c4b4c"
 dependencies = [
  "adler2",
  "simd-adler32",
+]
+
+[[package]]
+name = "muchovox"
+version = "0.3.0"
+dependencies = [
+ "clap-sys",
+ "egui",
+ "hound",
+ "realfft",
+ "truce",
+ "truce-au",
+ "truce-clap",
+ "truce-egui",
+ "truce-vst3",
 ]
 
 [[package]]

@@ -1,18 +1,18 @@
 [package]
-name = "chorusvox"
-version = "0.2.1"
+name = "muchovox"
+version = "0.3.0"
 edition = "2021"
-description = "ChorusVox: natural vocal harmonizer and pitch corrector in Rust (truce)"
+description = "MuchoVox: natural vocal harmonizer and pitch corrector in Rust (truce)"
 license = "MIT OR Apache-2.0"
 
 [lib]
-name = "chorusvox"
+name = "muchovox"
 path = "src/lib.rs"
 crate-type = ["cdylib", "staticlib", "rlib"]
 
 [[bin]]
-name = "chorusvox_cli"
-path = "src/bin/chorusvox_cli.rs"
+name = "muchovox_cli"
+path = "src/bin/muchovox_cli.rs"
 
 [features]
 default = ["truce-plugin"]

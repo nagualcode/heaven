@@ -1,9 +1,9 @@
-# ChorusVox
+# MuchoVox
 
 **Vocal harmonizer and pitch corrector for macOS (Apple Silicon), Windows and Linux, as AU and
 VST3, written in Rust with the [truce](https://github.com/truce-audio/truce) framework.**
 
-ChorusVox puts up to 4 harmony voices (8 with **Double**) on top of your voice and sounds like
+MuchoVox puts up to 4 harmony voices (8 with **Double**) on top of your voice and sounds like
 real singers right away, without hours of tweaking: few options, all automatable in Ableton
 Live. It also corrects the pitch of the lead vocal, with or without the harmonies.
 
@@ -19,21 +19,21 @@ Download the package for your system from the [Releases](../../releases) page.
 
 | System | Package | Formats | Copy to |
 |---|---|---|---|
-| macOS (Apple Silicon) | `ChorusVox-macOS-AppleSilicon.zip` | AU, VST3 | `~/Library/Audio/Plug-Ins/Components/` (AU) and `~/Library/Audio/Plug-Ins/VST3/` (VST3) |
-| Windows (x64) | `ChorusVox-Windows-x64.zip` | VST3 | `C:\Program Files\Common Files\VST3\` |
-| Linux (x64) | `ChorusVox-Linux-x64.tar.gz` | VST3 | `~/.vst3/` |
+| macOS (Apple Silicon) | `MuchoVox-macOS-AppleSilicon.zip` | AU, VST3 | `~/Library/Audio/Plug-Ins/Components/` (AU) and `~/Library/Audio/Plug-Ins/VST3/` (VST3) |
+| Windows (x64) | `MuchoVox-Windows-x64.zip` | VST3 | `C:\Program Files\Common Files\VST3\` |
+| Linux (x64) | `MuchoVox-Linux-x64.tar.gz` | VST3 | `~/.vst3/` |
 
 On macOS, if Gatekeeper blocks the plugin:
 
 ```bash
-xattr -cr ~/Library/Audio/Plug-Ins/Components/ChorusVox.component ~/Library/Audio/Plug-Ins/VST3/ChorusVox.vst3
+xattr -cr ~/Library/Audio/Plug-Ins/Components/MuchoVox.component ~/Library/Audio/Plug-Ins/VST3/MuchoVox.vst3
 ```
 
-Restart your DAW. In Live: *Plug-Ins → Audio Units → Jardim Sonoro → ChorusVox* (or *VST3*).
+Restart your DAW. In Live: *Plug-Ins → Audio Units → Jardim Sonoro → MuchoVox* (or *VST3*).
 
 ## Using it in Ableton Live
 
-1. Put **ChorusVox** as an effect on the vocal track.
+1. Put **MuchoVox** as an effect on the vocal track.
 2. Choose where the harmony comes from (buttons at the top):
    * **CHORD**: pick a **Root** and a **Chord**. To change chords through the song, automate
      *Root* and *Chord* on the timeline. The change happens exactly at the drawn point. If you
@@ -42,7 +42,7 @@ Restart your DAW. In Live: *Plug-Ins → Audio Units → Jardim Sonoro → Choru
    * **SCALE**: just the key (**Key** + **Scale**). The voices move in diatonic thirds, with no
      chords needed.
    * **MIDI CHORD**: play or record chords on a MIDI track. On that track, under *MIDI To*, pick
-     the vocal track and then *ChorusVox*. The voices choose the best notes of the chord.
+     the vocal track and then *MuchoVox*. The voices choose the best notes of the chord.
    * **MIDI NOTES**: each held MIDI note becomes a voice (up to 4), at that exact pitch.
 3. **VOICES** (1–4) and **VOICING**:
    * *Above*: close harmony above the lead.
@@ -76,7 +76,7 @@ In the **TUNE** panel:
   * *MIDI CHORD* and *MIDI NOTES*: the held MIDI notes (with none held, any semitone).
 
 **Pitch correction only, no harmonies:** turn on **LEAD TUNE** and turn off **HARMONIES** at the
-top. Then choose **SCALE**, the key and the scale. ChorusVox then works as a lead vocal
+top. Then choose **SCALE**, the key and the scale. MuchoVox then works as a lead vocal
 auto-tune. With both on, the harmonies are built from the corrected note.
 
 The formants stay where they are, so the correction does not change the timbre of the voice.
@@ -84,17 +84,17 @@ Bypass turns both off, without clicks.
 
 **Latency:** 80 ms, reported to the host. Live compensates for it automatically on playback and
 mixdown. To record while hearing the harmony live, the delay is noticeable: record the dry vocal
-and use ChorusVox at mixdown. The 80 ms is the price of looking 30 ms ahead and knowing which
+and use MuchoVox at mixdown. The 80 ms is the price of looking 30 ms ahead and knowing which
 note the singer will reach *before* choosing the harmony.
 
 ---
 
 ## Sound lineage
 
-ChorusVox inherits five decades of harmonizers. Each generation solved one problem and left
+MuchoVox inherits five decades of harmonizers. Each generation solved one problem and left
 another, and each left an idea that lives on here.
 
-| Era | Milestone | What it brought | What was missing | What ChorusVox inherited |
+| Era | Milestone | What it brought | What was missing | What MuchoVox inherited |
 |---|---|---|---|---|
 | 1975 | **Eventide H910 Harmonizer** | The first commercial digital pitch shifter: harmony in real time. | Shifting through a variable delay line: "chipmunk" voice, displaced formants, periodic glitches. | The idea that a voice can sing with itself. |
 | 1989–1990 | **Lent** (*Computer Music Journal*) and **TD-PSOLA** (Moulines & Charpentier) | Pitch shifting *synchronized to the glottal cycle*: each grain is one cycle of the voice, so the spectral envelope (the formants, the "face" of the voice) stays put. | Needs to know exactly where each cycle starts. | The whole shifting engine: two-period grains with a Hann window, re-placed at the target note's period. |
@@ -102,7 +102,7 @@ another, and each left an idea that lives on here.
 | 2000s | **TC-Helicon** (VoicePrism, VoiceOne, VoiceLive) | "Hybrid" shifting with formant correction, humanization and harmony guided by the accompaniment. In the line of the polyphonic harmony patents (US 8,168,877): ~0.2 semitone hysteresis, a note counts as stable only after ~100 ms, choosing a minor or major third by consonance with the chord. | Mandatory minimum latency in live hardware: it decides the note without looking ahead. | Choosing notes by consonance with the chord, and the idea of waiting for the note to "settle". |
 | 2000s–today | **Antares Harmony Engine** (and Auto-Tune, US 5,973,252) | 4 voices, *Throat Modeling*, *Naturalize*, pitch and timing variation, Chord/Scale/MIDI modes, Choir. | In a side-by-side test (below), harmonies collapsing into unison, flat and robotic tuning, and amplitude modulation visible in the spectrum. | The interaction model (harmony source + voices + humanization), reduced to the essentials. |
 
-What ChorusVox adds to this lineage:
+What MuchoVox adds to this lineage:
 
 * **Real lookahead:** it chooses the harmony note knowing where the singer will arrive.
 * **Proportional transitions:** the harmony leaves the old note for the new one in the *same
@@ -116,7 +116,7 @@ What ChorusVox adds to this lineage:
 
 ## How we researched it
 
-ChorusVox was built in a research and engineering session with Claude (Anthropic), under a
+MuchoVox was built in a research and engineering session with Claude (Anthropic), under a
 curious constraint: **whoever wrote the DSP cannot hear**. So everything that "sounds good" here
 first had to *measure* well.
 
@@ -218,7 +218,7 @@ With the harmony off, the correction runs at more than 130× real time.
 
 Same vocal passage, one voice a diatonic third above:
 
-| | Harmony Engine 4x | ChorusVox |
+| | Harmony Engine 4x | MuchoVox |
 |---|---|---|
 | frames with a wrong note / unison (0–2 semitones) | 543 | 130 |
 | abrupt pitch jumps | 27 | 2 |
@@ -267,14 +267,14 @@ Same vocal passage, one voice a diatonic third above:
 ```bash
 cargo truce install --au2 --vst3            # build, sign and install
 cargo test --no-default-features            # music theory, engine and real-time tests
-cargo run --release --no-default-features --bin chorusvox_cli -- voice.wav out.wav \
+cargo run --release --no-default-features --bin muchovox_cli -- voice.wav out.wav \
     mode=chord voices=3 voicing=around chords="0:Am,4:F,8:C,12:G" double=1
-cargo run --release --no-default-features --bin chorusvox_cli -- voice.wav out.wav \
+cargo run --release --no-default-features --bin muchovox_cli -- voice.wav out.wav \
     tune=1 harmonies=0 retune=20 mode=scale root=A scale=minor
 cargo truce screenshot --out docs/gui.png
 ```
 
-`chorusvox_cli` runs the same engine as the plugin offline. It accepts a chord timeline (like Live
+`muchovox_cli` runs the same engine as the plugin offline. It accepts a chord timeline (like Live
 automation), MIDI notes by interval and `dump=file.csv` with the detected pitch and the target
 notes of each voice.
 

@@ -1,7 +1,7 @@
 //! The audio path must not allocate: a real-time thread cannot wait on the system allocator.
 
-use chorusvox::dsp::harmony::{Mode, Voicing};
-use chorusvox::dsp::{Engine, EngineParams};
+use muchovox::dsp::harmony::{Mode, Voicing};
+use muchovox::dsp::{Engine, EngineParams};
 use std::alloc::{GlobalAlloc, Layout, System};
 use std::cell::Cell;
 

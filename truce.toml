@@ -4,11 +4,11 @@ id = "com.jardimsonoro"
 au_manufacturer = "JdSn"
 
 [[plugin]]
-name = "ChorusVox"
-bundle_id = "chorusvox"
-crate = "chorusvox"
+name = "MuchoVox"
+bundle_id = "muchovox"
+crate = "muchovox"
 category = "effect"
 vst3_subcategory = "Pitch Shift"
-fourcc = "ChVx"
+fourcc = "MchV"
 au_tag = "Music Effects"
 midi_input = true
